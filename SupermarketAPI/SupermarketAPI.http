@@ -1,0 +1,21 @@
+@SupermarketAPI_HostAddress = https://localhost:7147
+
+GET {{SupermarketAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{SupermarketAPI_HostAddress}}/api/products
+Authorization: Bearer {{$bearerToken}}
+
+###
+
+POST {{SupermarketAPI_HostAddress}}/api/users/login
+Authorization: Bearer {{$bearerToken}}
+Content-Type: application/json
+
+{
+  //UserRequest
+}
+
+###
