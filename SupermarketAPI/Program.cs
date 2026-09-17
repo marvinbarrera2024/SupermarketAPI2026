@@ -3,6 +3,7 @@ using SupermarketAPI.Endpoints;
 using SupermarketAPI.Models;
 using SupermarketAPI.Services.Products;
 using SupermarketAPI.Services.Users;
+using SupermarketAPI.Services.Brands;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -50,6 +51,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IBrandServices, BrandServices>();
 
 var jwtSettings = builder.Configuration.GetSection("JwtSetting");
 var secretKey = jwtSettings.GetValue<string>("SecretKey");
@@ -65,7 +67,7 @@ options =>
 options => { 
     //Permite usar HTTP en lugar de HTTPS
     options.RequireHttpsMetadata = false;
-    //Guardar el token en el contexto de autenticación
+    //Guardar el token en el contexto de autenticaciï¿½n
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {

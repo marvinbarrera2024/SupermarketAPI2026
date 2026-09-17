@@ -1,8 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SupermarketAPI.DTOs;
-using SupermarketAPI.Models;
-using SupermarketAPI.Services.Products;
 using SupermarketAPI.Services.Users;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

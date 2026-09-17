@@ -5,6 +5,7 @@
         public static void UseEndpoints(this WebApplication app) {
             ProductEndpoints.Add(app);
             UserEndpoints.Add(app);
+            BrandEndpoints.Add(app);
         }
     }
 }

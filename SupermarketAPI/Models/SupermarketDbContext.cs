@@ -19,12 +19,20 @@ public partial class SupermarketDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<Brand> Brands { get; set; }
+
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
 //        => optionsBuilder.UseSqlServer("Server=DESKTOP-9KSCT6V\\SQLEXPRESS; Database=SupermarketDb; User Id=sa; Password=321; Encrypt=False; TrustServerCertificate=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Brand>(entity =>
+        {
+            entity.HasKey(e => e.BrandId);
+            entity.Property(e => e.BrandName).HasMaxLength(100);
+        });
+
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD881388B5");
@@ -53,6 +61,14 @@ public partial class SupermarketDbContext : DbContext
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
+            entity.HasData(new User
+            {
+                UserId = 1,
+                Username = "administrador",
+                UserPassword = "admin2026",
+                UserRole = "Administrador"
+            });
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -10,10 +10,12 @@ namespace SupermarketAPI.Mappings
             //Modelo -> DTO
             CreateMap<Product, ProductResponse>();
             CreateMap<User, UserResponse>();
+            CreateMap<Brand, BrandResponse>();
 
             //DTO -> Modelo
             CreateMap<ProductRequest, Product>();
             CreateMap<UserRequest, User>();
+            CreateMap<BrandRequest, Brand>();
         }
     }
 }
